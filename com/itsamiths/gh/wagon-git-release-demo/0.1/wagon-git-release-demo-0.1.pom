@@ -42,11 +42,11 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<resources>
+		<!-- <resources>
 			<resource>
 				<directory>src/test/java</directory>
 			</resource>
-		</resources>
+		</resources> -->
 		<extensions>
 			<extension>
 				<groupId>ar.com.synergian</groupId>
