@@ -1,0 +1,81 @@
+<!-- https://synergian.github.io/wagon-git -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.itsamiths.gh.consume</groupId>
+	<artifactId>wagon-git-consume-demo</artifactId>
+	<version>0.1</version>
+	<name>wagon-git-consume-demo</name>
+	<description>Project that demos wagon git( https://synergian.github.io/wagon-git/github.html ) consume usage</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.itsamiths.gh</groupId>
+			<artifactId>wagon-git-release-demo</artifactId>
+			<version>0.1</version>
+			<!-- <scope>test</scope> -->
+		</dependency>
+	</dependencies>
+	<repositories>
+		<repository>
+			<id>wagon-git-demo</id>
+			<name>wagon-git-demo</name>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<!-- distributionManagement url was <url>git:your-branch://git@github.com:yourgithubusername/your-github-repo.git</url> -->
+			<url>https://raw.githubusercontent.com/itsamiths/wagon-git-demo/releases</url>
+		</repository>
+	</repositories>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.6.1</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.2</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5.2</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.1.1</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>com.itsamiths.gh.consume.Consumer</mainClass>
+							<arguments>
+								<argument>myArg1</argument>
+								<argument>myArg2</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
